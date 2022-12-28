@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>    
+    <style>
+    #clock {
+    background-color: #7c1aaecb;
+    margin-top: 350px;
+    font-weight: 1000;
+    color: white;
+    padding-top: 50px;
+    text-shadow: 0px 0px 10px white;
+    padding-bottom: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100px;
+    text-align: center;
+    box-shadow:0px 0px 50px #7c1aaecb; ;
+      }
+      #b{
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body id="b">
+   <div class="container-fluid col-12">
+    <div id="clock"></div>
+  </div>
+    <script>
+      function Time() {
+        var date = new Date();
+
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+
+        var period = "";
+
+        if (hour >= 12) {
+          period = "PM";
+        } else {
+          period = "AM";
+        }
+
+        if (hour == 0) {
+          hour = 12;
+        } else {
+          if (hour > 12) {
+            hour = hour - 12;
+          }
+        }
+
+        hour = update(hour);
+        minute = update(minute);
+        second = update(second);
+
+        document.getElementById("clock").innerText =
+          hour + " : " + minute + " : " + second + " " + period;
+
+        setTimeout(Time, 1000);
+      }
+      function update(t) {
+        if (t < 10) {
+          return "0" + t;
+        } else {
+          return t;
+        }
+      }
+
+      Time();
+    </script>
+  </body>
+</html>
